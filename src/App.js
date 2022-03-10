@@ -7,6 +7,9 @@ import Articles from './components/Articles';
 const title = "Sorting Articles";
 
 function App({articles}) {
+    articles.sort((a,b)=>{
+        return (b.upvotes - a.upvotes);
+    })
     const [sortart, setSortart]= useState([])
 
     const handleClick= (e)=>{
@@ -34,13 +37,13 @@ function App({articles}) {
         
     }
 
-    useEffect(()=>{
-        //let art= [...articles];
-            articles.sort((a,b)=>{
-                return (b.upvotes - a.upvotes);
-            })
-        // setSortart(art)
-    }, [])
+    // useEffect(()=>{
+    //     //let art= [...articles];
+    //         articles.sort((a,b)=>{
+    //             return (b.upvotes - a.upvotes);
+    //         })
+    //     // setSortart(art)
+    // }, [])
 
     return (
         <div className="App">
