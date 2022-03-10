@@ -35,11 +35,11 @@ function App({articles}) {
     }
 
     useEffect(()=>{
-        let art= [...articles];
-            art.sort((a,b)=>{
+        //let art= [...articles];
+            articles.sort((a,b)=>{
                 return (b.upvotes - a.upvotes);
             })
-        setSortart(art)
+        // setSortart(art)
     }, [])
 
     return (
@@ -50,7 +50,7 @@ function App({articles}) {
                 <button id='upvoted' data-testid="most-upvoted-link" className="small" onClick={handleClick}>Most Upvoted</button>
                 <button id='recent' data-testid="most-recent-link" className="small" onClick={handleClick}>Most Recent</button>
             </div>
-            <Articles articles={sortart}/>
+            <Articles articles={articles}/>
         </div>
     );
 
