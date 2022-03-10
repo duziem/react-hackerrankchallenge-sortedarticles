@@ -7,9 +7,9 @@ import Articles from './components/Articles';
 const title = "Sorting Articles";
 
 function App({articles}) {
-    articles.sort((a,b)=>{
-        return (b.upvotes - a.upvotes);
-    })
+    // articles.sort((a,b)=>{
+    //     return (b.upvotes - a.upvotes);
+    // })
     const [sortart, setSortart]= useState([])
 
     const handleClick= (e)=>{
@@ -37,13 +37,13 @@ function App({articles}) {
         
     }
 
-    // useEffect(()=>{
-    //     //let art= [...articles];
-    //         articles.sort((a,b)=>{
-    //             return (b.upvotes - a.upvotes);
-    //         })
-    //     // setSortart(art)
-    // }, [])
+    useEffect(()=>{
+        let art= [...articles];
+            articles.sort((a,b)=>{
+                return (b.upvotes - a.upvotes);
+            })
+        setSortart(art)
+    }, [])
 
     return (
         <div className="App">
@@ -53,7 +53,8 @@ function App({articles}) {
                 <button id='upvoted' data-testid="most-upvoted-link" className="small" onClick={handleClick}>Most Upvoted</button>
                 <button id='recent' data-testid="most-recent-link" className="small" onClick={handleClick}>Most Recent</button>
             </div>
-            <Articles articles={articles}/>
+            {sortart.map((art)=> <Articles art={art}/>)}
+            
         </div>
     );
 
