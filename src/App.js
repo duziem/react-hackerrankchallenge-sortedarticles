@@ -10,7 +10,9 @@ function App({articles}) {
     // articles.sort((a,b)=>{
     //     return (b.upvotes - a.upvotes);
     // })
-    const [sortart, setSortart]= useState([])
+    const [sortart, setSortart]= useState(articles.sort((a,b)=>{
+        return (b.upvotes - a.upvotes);
+    }))
 
     const handleClick= (e)=>{
         if(e.target.id.includes('upvoted')){
@@ -37,13 +39,13 @@ function App({articles}) {
         
     }
 
-    useEffect(()=>{
-        let art= [...articles];
-            articles.sort((a,b)=>{
-                return (b.upvotes - a.upvotes);
-            })
-        setSortart(art)
-    }, [])
+    // useEffect(()=>{
+    //     let art= [...articles];
+    //         articles.sort((a,b)=>{
+    //             return (b.upvotes - a.upvotes);
+    //         })
+    //     setSortart(art)
+    // }, [])
 
     return (
         <div className="App">
